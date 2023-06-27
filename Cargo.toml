@@ -1,0 +1,27 @@
+[package]
+name = "easy_proc"
+version = "0.3.0"
+authors = ["Brett Etter <brett@staratlas.com>"]
+edition = "2021"
+description = "Helper macros for making proc macros"
+documentation = "https://docs.rs/easy_proc/latest/easy_proc/"
+repository = "https://github.com/Buzzec/easy_proc"
+license = "Apache-2.0"
+
+[workspace]
+members = [
+    "common",
+    "derive",
+]
+
+[dependencies]
+easy_proc_common = { version = "0.3.0", path = "common" }
+easy_proc_derive = { version = "0.3.0", path = "derive" }
+proc-macro-error = "1.0.4"
+proc-macro2 = "1.0.27"
+syn = "2.0.22"
+quote = "1.0.28"
+
+[[example]]
+name = "argument_list"
+crate-type = ["cdylib", "lib"]

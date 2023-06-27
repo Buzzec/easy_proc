@@ -1,0 +1,13 @@
+[package]
+name = "easy_proc_common"
+version = "0.3.0"
+authors = ["Brett Etter <brett@staratlas.com>"]
+edition = "2021"
+description = "Common code for `easy_proc` and `easy_proc_derive`"
+documentation = "https://docs.rs/easy_proc_common/latest/easy_proc_common/"
+repository = "https://github.com/Buzzec/easy_proc"
+license = "Apache-2.0"
+
+[dependencies]
+syn = "2.0.22"
+proc-macro-error = "1.0.4"
