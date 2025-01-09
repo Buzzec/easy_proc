@@ -9,5 +9,5 @@ repository = "https://github.com/Buzzec/easy_proc"
 license = "Apache-2.0"
 
 [dependencies]
-syn = "2.0.22"
-proc-macro-error = "1.0.4"
+syn = "2.0"
+proc-macro-error2 = "2.0.1"
