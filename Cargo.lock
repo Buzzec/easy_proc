@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "easy_proc"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "easy_proc_common",
  "easy_proc_derive",
@@ -15,7 +15,7 @@ dependencies = [
 
 [[package]]
 name = "easy_proc_common"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "proc-macro-error2",
  "syn",
@@ -23,7 +23,7 @@ dependencies = [
 
 [[package]]
 name = "easy_proc_derive"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "easy_proc",
  "easy_proc_common",
