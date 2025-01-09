@@ -112,7 +112,7 @@ pub fn argument_list_derive(ts: TokenStream) -> TokenStream {
     if attr_ident_fields.len() > 1 {
         abort!(attr_ident_fields[1].1, "Multiple `attr_ident` fields");
     }
-    let attr_ident_field = attr_ident_fields.get(0).map(|(index, _)| {
+    let attr_ident_field = attr_ident_fields.first().map(|(index, _)| {
         (
             field_names.remove(*index),
             field_strs.remove(*index),
