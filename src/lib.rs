@@ -10,7 +10,7 @@
 pub extern crate self as easy_proc;
 
 use proc_macro2::Ident;
-pub use proc_macro_error;
+pub use proc_macro_error2;
 use syn::Attribute;
 
 pub use easy_proc_common::{find_attr, find_attrs};

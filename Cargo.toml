@@ -1,6 +1,6 @@
 [package]
 name = "easy_proc"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["Brett Etter <brett@staratlas.com>"]
 edition = "2021"
 description = "Helper macros for making proc macros"
@@ -15,12 +15,11 @@ members = [
 ]
 
 [dependencies]
-easy_proc_common = { version = "0.3.0", path = "common" }
-easy_proc_derive = { version = "0.3.0", path = "derive" }
-proc-macro-error = "1.0.4"
-proc-macro2 = "1.0.27"
-syn = "2.0.22"
-quote = "1.0.28"
+easy_proc_common = { version = "0.4.0", path = "common" }
+easy_proc_derive = { version = "0.4.0", path = "derive" }
+proc-macro-error2 = "2.0.1"
+proc-macro2 = "1.0"
+syn = "2.0"
 
 [[example]]
 name = "argument_list"

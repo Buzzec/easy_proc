@@ -12,7 +12,7 @@ use easy_proc_common::find_attrs;
 use proc_macro::TokenStream;
 use proc_macro2::Span;
 use proc_macro_crate::{crate_name, FoundCrate};
-use proc_macro_error::{abort, proc_macro_error};
+use proc_macro_error2::{abort, proc_macro_error};
 use quote::quote;
 use syn::parse::ParseStream;
 use syn::punctuated::Punctuated;
@@ -112,7 +112,7 @@ pub fn argument_list_derive(ts: TokenStream) -> TokenStream {
     if attr_ident_fields.len() > 1 {
         abort!(attr_ident_fields[1].1, "Multiple `attr_ident` fields");
     }
-    let attr_ident_field = attr_ident_fields.get(0).map(|(index, _)| {
+    let attr_ident_field = attr_ident_fields.first().map(|(index, _)| {
         (
             field_names.remove(*index),
             field_strs.remove(*index),
@@ -167,13 +167,13 @@ pub fn argument_list_derive(ts: TokenStream) -> TokenStream {
                             }
                         )*
                         else {
-                            #crate_name::proc_macro_error::abort!(#ident_ident, "Unknown argument `{}`", #ident_ident);
+                            #crate_name::proc_macro_error2::abort!(#ident_ident, "Unknown argument `{}`", #ident_ident);
                         }
 
                         if #input_ident.peek(::syn::Token![,]) {
                             #input_ident.parse::<::syn::Token![,]>()?;
                         } else if !#input_ident.is_empty() {
-                            #crate_name::proc_macro_error::abort!(
+                            #crate_name::proc_macro_error2::abort!(
                                 #input_ident.span(),
                                 "Error parsing arguments, expected `,` or end of arguments"
                             )
@@ -181,7 +181,7 @@ pub fn argument_list_derive(ts: TokenStream) -> TokenStream {
                     }
                     Ok(())
                 }){
-                    #crate_name::proc_macro_error::abort_call_site!(
+                    #crate_name::proc_macro_error2::abort_call_site!(
                         "Error parsing: `{}`", __error
                     )
                 }
@@ -343,7 +343,7 @@ impl ArgEnumVariant {
                 );
                 quote! {
                     if ::std::option::Option::is_some(&#variable_ident) {
-                        #crate_name::proc_macro_error::abort!(#ident_ident, #error_string);
+                        #crate_name::proc_macro_error2::abort!(#ident_ident, #error_string);
                     }
                     <::syn::Token![=] as ::syn::parse::Parse>::parse(#input_ident)?;
                     #variable_ident = ::std::option::Option::Some(<#ty as ::syn::parse::Parse>::parse(#input_ident)?);
@@ -360,7 +360,7 @@ impl ArgEnumVariant {
                 );
                 quote! {
                     if ::std::option::Option::is_some(&#variable_ident) {
-                        #crate_name::proc_macro_error::abort!(#ident_ident, #error_string);
+                        #crate_name::proc_macro_error2::abort!(#ident_ident, #error_string);
                     }
                     #variable_ident = ::std::option::Option::Some(<#ty as ::syn::parse::Parse>::parse(#input_ident)?);
                 }
@@ -375,7 +375,7 @@ impl ArgEnumVariant {
                 );
                 quote! {
                     if #variable_ident {
-                        #crate_name::proc_macro_error::abort!(#ident_ident, #error_string);
+                        #crate_name::proc_macro_error2::abort!(#ident_ident, #error_string);
                     }
                     #variable_ident = true;
                 }
@@ -400,7 +400,7 @@ impl ArgEnumVariant {
                 quote! {
                     #variable_ident: match #variable_ident{
                         ::std::option::Option::Some(val) => val,
-                        ::std::option::Option::None => #crate_name::proc_macro_error::abort!(#attr_ident, #error_msg),
+                        ::std::option::Option::None => #crate_name::proc_macro_error2::abort!(#attr_ident, #error_msg),
                     },
                 }
             }
